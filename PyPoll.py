@@ -12,6 +12,14 @@ import os
 # Set a variable to hold the name and path of the files to read from and write to
 file_to_read = os.path.join("Resources","election_results.csv")
 file_to_write = os.path.join("Analysis","election_analysis.txt")
+# Total Votes casted
+total_votes = 0
+
+# Candidate Optiosn list
+candidate_options = []
+
+# Declare a Candidates votes dictionary
+candidate_votes = {}
 
 
 # Open the Election results CSV file
@@ -27,10 +35,27 @@ with open(file_to_read,'r') as election_data:
 
     # Print each row
     for row in file_reader:
-         print(row[0])
+        # Increment the total number of votes
+        total_votes += 1
+        candidate_name = row[2]
+
+        if candidate_name not in candidate_options:
+            # Add candidate name to the candidate list
+            candidate_options.append(row[2])
+
+            # Start tracking candidate's votes
+            candidate_votes[candidate_name] = 0
+
+        # Increment the total number of votes for the current candidate
+        candidate_votes[candidate_name] += 1
 
 
-with open(file_to_write,"w") as analysis_data:
-    print(analysis_data)
+
+print(total_votes)
+print(candidate_options)
+print(candidate_votes)
+
+# with open(file_to_write,"w") as analysis_data:
+#     print(analysis_data)
 
 
