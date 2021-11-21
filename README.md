@@ -39,5 +39,7 @@ __369,711__
 * Winning Vote Count: __272,892__
 * Winning Percentage: __73.8%__
 
+![Election Analysis Results](/Resources/Election_Analysis_Results.png)
+
 ## Audit Summary
 It is clear that this process could be used to audit any other election process, changes might be required to accomodate for other file names and/or location, perhaps to standarize the `CSV` file structure to facilitate the use of this tool, otherwise it might require a reformat so the process runs correctly.
