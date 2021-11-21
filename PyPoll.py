@@ -30,7 +30,7 @@ with open(file_to_read,'r') as election_data:
          print(row[0])
 
 
-# with open(file_to_write,"w") as analysis_data:
-#     print(analysis_data)
+with open(file_to_write,"w") as analysis_data:
+    print(analysis_data)
 
 
