@@ -21,6 +21,11 @@ candidate_options = []
 # Declare a Candidates votes dictionary
 candidate_votes = {}
 
+# Winning Candidate and Winning Count Tracker
+winning_candidate = ""
+winning_count = 0
+winning_percentage = 0
+
 
 # Open the Election results CSV file
 with open(file_to_read,'r') as election_data:
@@ -49,11 +54,35 @@ with open(file_to_read,'r') as election_data:
         # Increment the total number of votes for the current candidate
         candidate_votes[candidate_name] += 1
 
+# Now we need to calculate the percentage of votes per candidate
+for candidate_name in candidate_votes:
+    # Retrieve the number of votes
+    votes = candidate_votes[candidate_name]
 
+    # Calculate the percentage
+    vote_percentage = float(votes) / float(total_votes) * 100
 
-print(total_votes)
-print(candidate_options)
-print(candidate_votes)
+    if votes > winning_count:
+        winning_count = votes
+        winning_percentage = vote_percentage
+        winning_candidate = candidate_name
+
+    # Print the candidate and the percentage of votes
+    print(f"{candidate_name}: {vote_percentage:.1f}% ({votes:,})\n")
+
+winning_candidate_summary = (
+    f"-----------------------------------------\n"
+    f"Winner: {winning_candidate}\n"
+    f"Winning Vote Count: {winning_count:,}\n"
+    f"Winning Percentage: {winning_percentage:.1f}%\n"
+    f"-----------------------------------------\n")
+
+# Print Winner
+print(winning_candidate_summary)
+
+# print(total_votes)
+# print(candidate_options)
+# print(candidate_votes)
 
 # with open(file_to_write,"w") as analysis_data:
 #     print(analysis_data)
